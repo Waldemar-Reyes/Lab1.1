@@ -6,11 +6,14 @@ public class Geometric extends Progression {
 	
 	public Geometric(double firstValue, double commonFactor) { 
 		super(firstValue); 
-		this.commonFactor = commonFactor; 
+		this.commonFactor = commonFactor;
+		firstValueTrue = false;
 	}
 	
 	@Override
 	public double nextValue() {
+		if (!firstValueTrue) 
+			throw new IllegalStateException("nextValue() invalid since firstValue() have not been executed.");
 		current = current * commonFactor; 
 		return current;
 	}

@@ -6,7 +6,8 @@ public class Fibonacci extends Progression {
 	
 	public Fibonacci() { 
 		this(1); 
-		prev = 0; 
+		prev = 0;
+		firstValueTrue = false;
 	}
 	private Fibonacci(double first) {
 		super(first);
@@ -14,6 +15,9 @@ public class Fibonacci extends Progression {
 
 	@Override
 	public double nextValue() {
+		if (!firstValueTrue) 
+			throw new IllegalStateException("nextValue() invalid since firstValue() have not been executed.");
+		current = current + prev;
         prev = current - prev;
 		return current;
 	}

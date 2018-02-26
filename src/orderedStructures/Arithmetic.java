@@ -5,11 +5,14 @@ public class Arithmetic extends Progression {
 	
 	public Arithmetic(double firstValue, double commonDifference) { 
 		super(firstValue); 
-		this.commonDifference = commonDifference; 
+		this.commonDifference = commonDifference;
+		firstValueTrue = false;
 	}
 	
 	@Override
 	public double nextValue() {
+		if (!firstValueTrue) 
+			throw new IllegalStateException("nextValue() invalid since firstValue() have not been executed.");
 		current = current + commonDifference; 
 		return current;
 	}

@@ -5,7 +5,8 @@ import interfaces.OrderedNumberStructure;
 
 public abstract class Progression implements OrderedNumberStructure {
 	private double first;       // the first value
-	protected double current;   
+	protected double current;
+	protected boolean firstValueTrue = false;
     // current is the current value of the object – it changes
 	// to “the value of the next term” whenever method 
 	// “nextValue” is applied to the object.
@@ -15,7 +16,8 @@ public abstract class Progression implements OrderedNumberStructure {
 		current = first; 
 	}
 
-	public double firstValue() { 
+	public double firstValue() {
+		firstValueTrue = true;
 		current = first; 
 		return current; 
 	}
